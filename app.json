@@ -5,24 +5,57 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Este aplicativo precisa de acesso à câmera para gravar vídeos.",
+        "NSMicrophoneUsageDescription": "Este aplicativo precisa de acesso ao microfone para gravar áudio com seus vídeos.",
+        "NSPhotoLibraryUsageDescription": "Este aplicativo precisa de acesso à sua biblioteca para salvar e compartilhar vídeos.",
+        "NSPhotoLibraryAddUsageDescription": "Este aplicativo precisa de permissão para salvar vídeos na sua biblioteca."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#000000"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_AUDIO"
+      ]
     },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Permita que o aplicativo acesse sua câmera para gravar vídeos.",
+          "microphonePermission": "Permita que o aplicativo acesse seu microfone para gravar áudio nos vídeos."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Permita que o aplicativo acesse suas fotos e vídeos para salvar gravações.",
+          "savePhotosPermission": "Permita que o aplicativo salve seus vídeos na galeria.",
+          "granularPermissions": ["photo", "video"]
+        }
+      ],
+      "expo-video"
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }
